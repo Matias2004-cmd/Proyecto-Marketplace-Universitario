@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UniMarket: marketplace de compra y venta para la comunidad universitaria.">
+    <title>UniMarket - Marketplace Universitario</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#inicio">
+                <i class="bi bi-shop me-2"></i>UniMarket
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#catalogo">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#favoritos">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#publicar">Publicar</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="btn-tema" class="btn btn-sm btn-outline-secondary" type="button"
+                            aria-label="Cambiar tema claro u oscuro">
+                            <i class="bi bi-moon" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#carrito" aria-label="Ver carrito">
+                            <i class="bi bi-cart3 fs-5" aria-hidden="true"></i>
+                            <span id="carrito-contador"
+                                class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-circle d-none">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seccion hero -->
+    <header id="inicio" class="hero-section py-5 border-bottom">
+        <div class="container py-md-5">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">Bienvenido a UniMarket</h1>
+                    <p class="lead text-muted mb-4">Compra y vende con estudiantes de tu comunidad universitaria.</p>
+
+                    <!-- Barra de busqueda -->
+                    <div class="input-group mb-4" role="search">
+                        <label for="buscador" class="visually-hidden">Buscar productos</label>
+                        <input type="search" id="buscador" class="form-control form-control-lg"
+                            placeholder="Busca libros, tecnología, accesorios...">
+                        <button class="btn btn-primary btn-lg" id="btn-buscar" type="button" aria-label="Buscar">
+                            <i class="bi bi-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex gap-3">
+                        <div class="stat-card text-center flex-fill">
+                            <div class="stat-number" id="total-productos">0</div>
+                            <div class="stat-label">Productos</div>
+                        </div>
+                        <div class="stat-card text-center flex-fill">
+                            <div class="stat-number" id="total-categorias">0</div>
+                            <div class="stat-label">Categorías</div>
+                        </div>
+                        <div class="stat-card text-center flex-fill">
+                            <div class="stat-number" id="total-vendedores">0</div>
+                            <div class="stat-label">Vendedores</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Zona de notificaciones (la llena JS) -->
+    <div id="notificaciones" class="container mt-3" role="status" aria-live="polite"></div>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Filtros -->
+        <section id="catalogo" class="py-4 bg-light">
+            <div class="container">
+                <h2 class="h4 mb-3">Catálogo</h2>
+                <div class="row g-3">
+                    <!-- Filtro por categoria -->
+                    <div class="col-md-6 col-lg-3">
+                        <label for="filtro-categoria" class="form-label fw-semibold">Categoría</label>
+                        <select id="filtro-categoria" class="form-select">
+                            <option value="">Todas las categorías</option>
+                        </select>
+                    </div>
+                    <!-- Filtro por precio -->
+                    <div class="col-md-6 col-lg-3">
+                        <label for="filtro-precio-max" class="form-label fw-semibold">Precio máximo</label>
+                        <input type="range" id="filtro-precio-max" class="form-range" min="0" max="500000"
+                            step="5000" value="500000">
+                        <small class="text-muted">Hasta $<span id="precio-actual">500000</span></small>
+                    </div>
+                    <!-- Ordenamiento -->
+                    <div class="col-md-6 col-lg-3">
+                        <label for="selector-orden" class="form-label fw-semibold">Ordenar por</label>
+                        <select id="selector-orden" class="form-select">
+                            <option value="relevancia">Relevancia</option>
+                            <option value="precio-menor">Precio: menor a mayor</option>
+                            <option value="precio-mayor">Precio: mayor a menor</option>
+                            <option value="nombre">Nombre A-Z</option>
+                        </select>
+                    </div>
+                    <!-- Limpiar -->
+                    <div class="col-md-6 col-lg-3 d-flex align-items-end">
+                        <button id="btn-limpiar-filtros" class="btn btn-outline-secondary w-100" type="button">
+                            <i class="bi bi-arrow-counterclockwise me-2" aria-hidden="true"></i>Limpiar filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalogo de productos -->
+        <section id="productos" class="py-5">
+            <div class="container">
+                <p id="contador-resultados" class="text-muted small mb-3">0 productos encontrados</p>
+                <div class="row g-4" id="catalogo-productos">
+                    <!-- Las tarjetas <article> las genera catalogo.js con createElement -->
+                </div>
+                <p id="sin-resultados" class="text-center text-muted py-5 d-none">
+                    No se encontraron productos con esos filtros.
+                </p>
+            </div>
+        </section>
+
+        <!-- Carrito y favoritos -->
+        <section id="carrito" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <h2 class="h4 mb-3">Mi carrito</h2>
+                        <ul id="lista-carrito" class="list-group mb-3">
+                            <!-- Los items los agrega carrito/app.js -->
+                        </ul>
+                        <p id="carrito-vacio" class="text-muted">Tu carrito está vacío.</p>
+                        <p class="fw-bold">Total: $<span id="carrito-total">0</span></p>
+                        <button id="btn-vaciar-carrito" class="btn btn-outline-danger" type="button">
+                            <i class="bi bi-trash me-2" aria-hidden="true"></i>Vaciar carrito
+                        </button>
+                    </div>
+
+                    <!-- Favoritos -->
+                    <aside id="favoritos" class="col-lg-5">
+                        <h2 class="h4 mb-3">Mis favoritos</h2>
+                        <ul id="lista-favoritos" class="list-group">
+                            <!-- Los favoritos los agrega JS -->
+                        </ul>
+                        <p id="favoritos-vacio" class="text-muted mt-3">Todavía no marcaste favoritos.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publicar producto -->
+        <section id="publicar" class="py-5">
+            <div class="container">
+                <h2 class="h4 mb-4">Publicar un producto</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <form id="formulario-producto" class="card p-4" novalidate>
+                            <div class="mb-3">
+                                <label for="producto-nombre" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="producto-nombre" name="nombre" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="producto-descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="producto-descripcion" name="descripcion"
+                                    rows="3"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="producto-precio" class="form-label">Precio ($)</label>
+                                    <input type="number" class="form-control" id="producto-precio" name="precio"
+                                        min="0" step="1000" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="producto-categoria" class="form-label">Categoría</label>
+                                    <select class="form-select" id="producto-categoria" name="categoria" required>
+                                        <option value="">Selecciona una categoría</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="producto-vendedor" class="form-label">Tu nombre</label>
+                                    <input type="text" class="form-control" id="producto-vendedor" name="vendedor"
+                                        required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="producto-carrera" class="form-label">Tu carrera</label>
+                                    <input type="text" class="form-control" id="producto-carrera" name="carrera"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="producto-contacto" class="form-label">Email o teléfono</label>
+                                <input type="text" class="form-control" id="producto-contacto" name="contacto"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="producto-imagen" class="form-label">Imagen del producto</label>
+                                <input type="text" class="form-control" id="producto-imagen" name="imagen"
+                                    placeholder="assets/img/producto.svg">
+                                <small class="text-muted">Opcional. Si lo dejas vacío se usa una imagen por
+                                    defecto.</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Publicar producto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h2 class="h5 mb-3">
+                        <i class="bi bi-shop me-2" aria-hidden="true"></i>UniMarket
+                    </h2>
+                    <p class="small">Marketplace seguro y confiable para la comunidad universitaria.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 class="h6">Equipo de desarrollo</h3>
+                    <ul class="list-unstyled small">
+                        <li><strong>Lucas Maulen:</strong> Estructura y catálogo</li>
+                        <li><strong>Matías Catalán:</strong> Filtros y búsqueda</li>
+                        <li><strong>Juan Soto:</strong> Favoritos y carrito</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 class="h6">Enlaces útiles</h3>
+                    <ul class="list-unstyled small">
+                        <li><a href="#catalogo" class="text-decoration-none text-info">Catálogo</a></li>
+                        <li><a href="#publicar" class="text-decoration-none text-info">Publicar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center small mb-0">&copy; 2026 UniMarket. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts propios -->
+    <script src="js/data.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/filtros.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -26,7 +26,7 @@ const productos = [
     categoria: "libros",
     descripcion:
       "Libro de calculo en buen estado, con anotaciones a lapiz en los primeros capitulos.",
-    imagen: "img/libro1.jpg",
+    imagen: "img/libro1.webp",
     vendedor: {
       nombre: "Camila Rojas",
       carrera: "Ingenieria Civil",
@@ -41,7 +41,7 @@ const productos = [
     categoria: "libros",
     descripcion:
       "Edicion de tapa dura, sin rayas ni hojas sueltas. Ideal para primer año.",
-    imagen: "img/libro2.jpg",
+    imagen: "img/libro2.webp",
     vendedor: {
       nombre: "Carlos Mendoza",
       carrera: "Ingenieria Fisica",
@@ -56,7 +56,7 @@ const productos = [
     categoria: "libros",
     descripcion:
       "Diccionario de bolsillo usado, tapa algo gastada pero completo y legible.",
-    imagen: "img/libro3.jpg",
+    imagen: "img/libro3.webp",
     vendedor: {
       nombre: "Diego Fuentes",
       carrera: "Ingenieria Comercial",
@@ -71,7 +71,7 @@ const productos = [
     categoria: "tecnologia",
     descripcion:
       "Notebook de 8GB de Ram y 256 GB SSD, bateria con buena duracion. Incluye cargador.",
-    imagen: "img/notebook1.jpg",
+    imagen: "img/notebook1.jpeg",
     vendedor: {
       nombre: "Fernanda Lagos",
       carrera: "Enfermeía",
@@ -86,7 +86,7 @@ const productos = [
     categoria: "tecnologia",
     descripcion:
       "Monitor de 24 pulgadas, ideal para trabajo y entretenimiento.",
-    imagen: "img/monitor1.jpg",
+    imagen: "img/monitor1.avif",
     vendedor: {
       nombre: "Diego Fuentes",
       carrera: "Ingenieria Comercial",

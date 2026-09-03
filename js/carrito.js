@@ -5,8 +5,6 @@
 let carrito = [];
 const CLAVE_CARRITO = "unimarket-carrito";
 
-// Convierte un numero a precio chileno: $ 25.000 
-const formatearPrecio = (precio) => new Intl.NumberFormat("es-CL").format(precio);
 // Guarda el carrito en LocalStorage para no perderlo al recargar. 
 const guardarCarrito = () => {
     localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito));
@@ -136,10 +134,10 @@ const renderCarrito = () => {
         nombre.textContent = producto.nombre;
         const precio = document.createElement("p");
         precio.className = "mb-1 text-muted small";
-        precio.textContent = `$${formatearPrecio(producto.precio)} c/u`;
+        precio.textContent = `${formatearPrecio(producto.precio)} c/u`;
         const subtotal = document.createElement("p");
         subtotal.className = "mb-0 fw-semibold";
-        subtotal.textContent = `Subtotal: $${formatearPrecio(producto.precio * item.cantidad)}`;
+        subtotal.textContent = `Subtotal: ${formatearPrecio(producto.precio * item.cantidad)}`;
         informacion.append(nombre, precio, subtotal);
         const controles = document.createElement("div");
         controles.className = "d-flex align-items-center gap-2"

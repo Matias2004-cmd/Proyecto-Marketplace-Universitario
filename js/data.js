@@ -31,8 +31,8 @@ const productos = [
       nombre: "Camila Rojas",
       carrera: "Ingenieria Civil",
       contacto: "camila.rojas@alumnos.cl",
-      favorito: false,
     },
+    favorito: false,
   },
   {
     id: 2,
@@ -46,8 +46,8 @@ const productos = [
       nombre: "Carlos Mendoza",
       carrera: "Ingenieria Fisica",
       contacto: "carlos.mendoza@alumnos.cl",
-      favorito: false,
     },
+    favorito: false,
   },
   {
     id: 3,
@@ -61,8 +61,9 @@ const productos = [
       nombre: "Diego Fuentes",
       carrera: "Ingenieria Comercial",
       contacto: "diego.fuentes@alumnos.cl",
-      favorito: false,
+      
     },
+    favorito: false,
   },
   {
     id: 4,
@@ -71,13 +72,14 @@ const productos = [
     categoria: "tecnologia",
     descripcion:
       "Notebook de 8GB de Ram y 256 GB SSD, bateria con buena duracion. Incluye cargador.",
-    imagen: "img/notebook1.jpeg",
+    imagen: "img/notebook1.webp",
     vendedor: {
       nombre: "Fernanda Lagos",
-      carrera: "Enfermeía",
+      carrera: "Enfermería",
       contacto: "fernanda.lagos@alumnos.cl",
-      favorito: false,
+      
     },
+    favorito: false,
   },
   {
     id: 5,
@@ -86,13 +88,14 @@ const productos = [
     categoria: "tecnologia",
     descripcion:
       "Monitor de 24 pulgadas, ideal para trabajo y entretenimiento.",
-    imagen: "img/monitor1.avif",
+    imagen: "img/monitor1.webp",
     vendedor: {
       nombre: "Diego Fuentes",
       carrera: "Ingenieria Comercial",
       contacto: "diego.fuentes@alumnos.cl",
-      favorito: false,
+      
     },
+    favorito: false,
   },
   // Agregar más productos según sea necesario
 ];

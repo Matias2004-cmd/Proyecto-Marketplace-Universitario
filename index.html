@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="UniMarket: marketplace de compra y venta para la comunidad universitaria.">
     <title>UniMarket - Marketplace Universitario</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +18,7 @@
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#inicio">
+            <a class="navbar-brand fw-bold" href="#">
                 <i class="bi bi-shop me-2"></i>UniMarket
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -56,7 +55,7 @@
     </nav>
 
     <!-- Seccion hero -->
-    <header id="inicio" class="hero-section py-5 border-bottom">
+    <header class="hero-section py-5 border-bottom">
         <div class="container py-md-5">
             <div class="row align-items-center">
                 <div class="col-lg-8">
@@ -64,13 +63,10 @@
                     <p class="lead text-muted mb-4">Compra y vende con estudiantes de tu comunidad universitaria.</p>
 
                     <!-- Barra de busqueda -->
-                    <div class="input-group mb-4" role="search">
+                    <div class="mb-4" role="search">
                         <label for="buscador" class="visually-hidden">Buscar productos</label>
                         <input type="search" id="buscador" class="form-control form-control-lg"
                             placeholder="Busca libros, tecnología, accesorios...">
-                        <button class="btn btn-primary btn-lg" id="btn-buscar" type="button" aria-label="Buscar">
-                            <i class="bi bi-search" aria-hidden="true"></i>
-                        </button>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -185,27 +181,25 @@
                 <h2 class="h4 mb-4">Publicar un producto</h2>
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <form id="formulario-producto" class="card p-4" novalidate>
+                        <form id="formulario-producto" class="card p-4">
                             <div class="mb-3">
                                 <label for="producto-nombre" class="form-label">Nombre del producto</label>
-                                <input type="text" class="form-control" id="producto-nombre" name="nombre" required>
+                                <input type="text" class="form-control" id="producto-nombre" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="producto-descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="producto-descripcion" name="descripcion"
-                                    rows="3"></textarea>
+                                <textarea class="form-control" id="producto-descripcion" rows="3"></textarea>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="producto-precio" class="form-label">Precio ($)</label>
-                                    <input type="number" class="form-control" id="producto-precio" name="precio"
-                                        min="0" step="1000" required>
+                                    <input type="number" class="form-control" id="producto-precio" min="0" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="producto-categoria" class="form-label">Categoría</label>
-                                    <select class="form-select" id="producto-categoria" name="categoria" required>
+                                    <select class="form-select" id="producto-categoria" required>
                                         <option value="">Selecciona una categoría</option>
                                     </select>
                                 </div>
@@ -214,28 +208,17 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="producto-vendedor" class="form-label">Tu nombre</label>
-                                    <input type="text" class="form-control" id="producto-vendedor" name="vendedor"
-                                        required>
+                                    <input type="text" class="form-control" id="producto-vendedor" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="producto-carrera" class="form-label">Tu carrera</label>
-                                    <input type="text" class="form-control" id="producto-carrera" name="carrera"
-                                        required>
+                                    <input type="text" class="form-control" id="producto-carrera" required>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="producto-contacto" class="form-label">Email o teléfono</label>
-                                <input type="text" class="form-control" id="producto-contacto" name="contacto"
-                                    required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="producto-imagen" class="form-label">Imagen del producto</label>
-                                <input type="text" class="form-control" id="producto-imagen" name="imagen"
-                                    placeholder="assets/img/producto.svg">
-                                <small class="text-muted">Opcional. Si lo dejas vacío se usa una imagen por
-                                    defecto.</small>
+                                <input type="text" class="form-control" id="producto-contacto" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100">Publicar producto</button>
@@ -251,25 +234,18 @@
     <footer class="bg-dark text-light mt-5">
         <div class="container py-5">
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-6 mb-4">
                     <h2 class="h5 mb-3">
                         <i class="bi bi-shop me-2" aria-hidden="true"></i>UniMarket
                     </h2>
                     <p class="small">Marketplace seguro y confiable para la comunidad universitaria.</p>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-6 mb-4">
                     <h3 class="h6">Equipo de desarrollo</h3>
                     <ul class="list-unstyled small">
                         <li><strong>Lucas Maulen:</strong> Estructura y catálogo</li>
                         <li><strong>Matías Catalán:</strong> Filtros y búsqueda</li>
                         <li><strong>Juan Soto:</strong> Favoritos y carrito</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h3 class="h6">Enlaces útiles</h3>
-                    <ul class="list-unstyled small">
-                        <li><a href="#catalogo" class="text-decoration-none text-info">Catálogo</a></li>
-                        <li><a href="#publicar" class="text-decoration-none text-info">Publicar</a></li>
                     </ul>
                 </div>
             </div>
@@ -280,10 +256,12 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Scripts propios -->
+    <!-- Scripts propios (app.js va ultimo: arranca todo en DOMContentLoaded) -->
     <script src="js/data.js"></script>
     <script src="js/catalogo.js"></script>
     <script src="js/filtros.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/formulario.js"></script>
     <script src="js/app.js"></script>
 </body>
 

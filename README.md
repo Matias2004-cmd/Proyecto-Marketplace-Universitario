@@ -96,6 +96,8 @@ Proyecto-Marketplace-Universitario/
 │   ├── data.js               # Datos simulados y funciones de modelo
 │   ├── catalogo.js           # Renderizado dinámico de productos
 │   ├── filtros.js            # Lógica de filtros y búsqueda
+│   ├── carrito.js            # Carrito y favoritos (HU-07, HU-08)
+│   ├── formulario.js         # Publicar y eliminar productos (HU-09, HU-10)
 │   └── app.js                # Inicialización y coordinación
 ├── assets/
 │   └── img/                  # Imágenes de productos (archivos locales)
@@ -132,6 +134,14 @@ Proyecto-Marketplace-Universitario/
   - Pobladores de selects de categorías
   - Event listeners para cada filtro
   - Validación en tiempo real
+
+- **js/carrito.js**:
+  - Carrito persistente en LocalStorage y cálculo del total con `reduce()`
+  - Favoritos: `toggleFavorito(id)` y contador en la navbar
+
+- **js/formulario.js**:
+  - Validación propia en el evento `submit` con mensajes por campo
+  - Alta de productos con `push` al array y eliminación con confirmación
 
 - **js/app.js**:
   - Inicialización en `DOMContentLoaded`

@@ -16,6 +16,7 @@ const refrescarCatalogo = () => {
     const filtrados = typeof aplicarFiltros === "function" ? aplicarFiltros() : obtenerProductos();
 
     renderProductos(ordenarProductos(filtrados, criterio));
+};
 
     // muestra un aviso temporal arriba del catalogo
     // se pueden llamar carrito.js y formulario.js
@@ -41,7 +42,6 @@ const refrescarCatalogo = () => {
         icono.className = tema === "oscuro" ? "bi bi-sun" : "bi bi-moon";
         boton.setAttribute("title", tema === "oscuro" ? "Tema claro" : "Tema oscuro");
     };
-};
 
 // prioridad: lo que el usuario eligio antes; sino, la preferencia del sistema.
 const obtenerTemaInicial = () => {
@@ -49,6 +49,7 @@ const obtenerTemaInicial = () => {
     if (guardado) {
         return guardado;
     }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro";
 };
 
 // arranque: se ejecuta cuando el html ya esta completo en el dom
@@ -63,5 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(CLAVE_TEMA, nuevo);
     });
     document.getElementById("selector-orden").addEventListener("change", refrescarCatalogo);
+    actualizarEstadisticas();
     refrescarCatalogo();
 });

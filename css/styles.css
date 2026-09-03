@@ -17,6 +17,8 @@
     --color-border: #e5e7eb;
     --color-bg-light: #f9fafb;
     --color-bg-dark: #111827;
+    --color-footer-text: #f9fafb;
+
 
     /*Tipografia*/
     --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -400,20 +402,20 @@ textarea.form-control {
 /*Footer*/
 footer {
     background-color: var(--color-bg-dark) !important;
-    color: var(--color-text) !important;
+    color: var(--color-footer-texttext) !important;
     border-color: var(--color-border) !important;
     transition: all 0.3s ease;
 }
 [data-tema="oscuro"] footer { 
     background-color: #0f172a !important;
 }
-footer h5,
-footer h6 {
-    color: var(--color-bg);
+footer .h5,
+footer .h6 {
+    color: var(--color-footer-text);
 }
 
-[data-tema="oscuro"] footer h5,
-[data-tema="oscuro"] footer h6 {
+[data-tema="oscuro"] footer .h5,
+[data-tema="oscuro"] footer .h6 {
     color: white;
 }
 footer a {

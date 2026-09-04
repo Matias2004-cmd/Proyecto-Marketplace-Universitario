@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(CLAVE_TEMA, nuevo);
     });
     document.getElementById("selector-orden").addEventListener("change", refrescarCatalogo);
+    inicializarCarrito();
     actualizarEstadisticas();
     refrescarCatalogo();
 });

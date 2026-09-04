@@ -67,6 +67,7 @@ UniMarket centraliza todas estas transacciones en una plataforma unificada, amig
 - [x] Formulario de publicación de productos
 - [x] Eliminación de productos
 - [x] Información del vendedor en cada producto
+- [x] Vista detallada del producto (modal de Bootstrap)
 
 #### ✅ Experiencia de Usuario
 - [x] Interfaz responsive (375px, 768px, 1280px)
@@ -78,10 +79,10 @@ UniMarket centraliza todas estas transacciones en una plataforma unificada, amig
 - [x] Estadísticas dinámicas en hero section
 
 #### 📊 Datos Simulados
-- **16 productos** de ejemplo distribuidos en 5 categorías
+- **12 productos** de ejemplo distribuidos en 5 categorías
 - **Precios realistas** en pesos chilenos ($15k - $450k)
 - **Vendedores únicos** con información de carrera y contacto
-- **Imágenes locales** en `assets/img/` (SVG)
+- **Imágenes locales** en `img/` (WebP, 640x480)
 
 ---
 
@@ -99,8 +100,7 @@ Proyecto-Marketplace-Universitario/
 │   ├── carrito.js            # Carrito y favoritos (HU-07, HU-08)
 │   ├── formulario.js         # Publicar y eliminar productos (HU-09, HU-10)
 │   └── app.js                # Inicialización y coordinación
-├── assets/
-│   └── img/                  # Imágenes de productos (archivos locales)
+├── img/                       # Imágenes de productos (WebP)
 ├── README.md                 # Documentación del proyecto
 └── .gitignore               # Archivos ignorados por git
 ```
@@ -290,7 +290,7 @@ git commit -m "[HU-11] Agregar tema oscuro - CSS variables y prefers-color-schem
 ## 🐛 Solución de Problemas
 
 ### Las imágenes no cargan
-- Verificar que `assets/img/` existe con archivos SVG
+- Verificar que `img/` existe con los archivos WebP
 - Revisar la ruta en `data.js` (debe ser relativa al HTML)
 - Abrir DevTools (F12) → Pestaña Network → Ver errores 404
 
@@ -324,6 +324,19 @@ git commit -m "[HU-11] Agregar tema oscuro - CSS variables y prefers-color-schem
 
 ---
 
+## 🖼️ Créditos de imágenes
+
+Las imágenes de productos provienen de [Wikimedia Commons](https://commons.wikimedia.org).
+Requieren atribución:
+
+- `img/teclado1.webp` — Pete Brown / User:Clusternote, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0)
+- `img/bicicleta1.webp` — M 93, [Attribution](https://commons.wikimedia.org/wiki/File:Bulls_Wild_Cup_1_(Modell_2010)_20100814.jpg)
+
+El resto (`calculadora1`, `mochila1`, `audifonos1`, `guitarra1`, `mancuernas1`) son CC0
+o dominio público y no exigen crédito.
+
+---
+
 ## 📄 Licencia
 
 Este proyecto es de carácter académico. Todos los derechos reservados al equipo de desarrollo.
@@ -339,7 +352,7 @@ Para dudas o problemas:
 
 ---
 
-**Última actualización**: 31 de Agosto de 2026  
+**Última actualización**: 4 de Septiembre de 2026  
 **Versión**: 1.0.0  
 **Estado**: En desarrollo 🚧
 

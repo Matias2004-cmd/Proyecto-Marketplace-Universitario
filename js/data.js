@@ -21,37 +21,37 @@ const categorias = [
 const productos = [
   {
     id: 1,
-    nombre: "Libro de Stewart, 8va edicion",
+    nombre: "Stewart - Calculus: Early Vectors",
     precio: 25000,
     categoria: "libros",
     descripcion:
-      "Libro de calculo en buen estado, con anotaciones a lapiz en los primeros capitulos.",
+      "Libro de cálculo en buen estado, con anotaciones a lápiz en los primeros capítulos.",
     imagen: "img/libro1.webp",
     vendedor: {
       nombre: "Camila Rojas",
-      carrera: "Ingenieria Civil",
+      carrera: "Ingeniería Civil",
       contacto: "camila.rojas@alumnos.cl",
     },
     favorito: false,
   },
   {
     id: 2,
-    nombre: "Fisica Universitaria Sears, Volumen 1",
+    nombre: "Solucionario University Physics, Volumen 1",
     precio: 32000,
     categoria: "libros",
     descripcion:
-      "Edicion de tapa dura, sin rayas ni hojas sueltas. Ideal para primer año.",
+      "Student Solutions Manual de Young y Freedman, capítulos 1 al 20. Tapa blanda, sin hojas sueltas.",
     imagen: "img/libro2.webp",
     vendedor: {
       nombre: "Carlos Mendoza",
-      carrera: "Ingenieria Fisica",
+      carrera: "Ingeniería Física",
       contacto: "carlos.mendoza@alumnos.cl",
     },
     favorito: false,
   },
   {
     id: 3,
-    nombre: "Diccionario Oxford Ingles-Espanol",
+    nombre: "Pocket Oxford Spanish Dictionary",
     precio: 15000,
     categoria: "libros",
     descripcion:
@@ -59,45 +59,147 @@ const productos = [
     imagen: "img/libro3.webp",
     vendedor: {
       nombre: "Diego Fuentes",
-      carrera: "Ingenieria Comercial",
+      carrera: "Ingeniería Comercial",
       contacto: "diego.fuentes@alumnos.cl",
-      
     },
     favorito: false,
   },
   {
     id: 4,
-    nombre: "Notebook Lenovo IdeaPad3",
+    nombre: "Notebook Lenovo Flex 2",
     precio: 420000,
     categoria: "tecnologia",
     descripcion:
-      "Notebook de 8GB de Ram y 256 GB SSD, bateria con buena duracion. Incluye cargador.",
+      "Pantalla táctil reclinable, Intel Core i5 con GeForce, 8 GB de RAM y 256 GB SSD. Incluye cargador.",
     imagen: "img/notebook1.webp",
     vendedor: {
       nombre: "Fernanda Lagos",
       carrera: "Enfermería",
       contacto: "fernanda.lagos@alumnos.cl",
-      
     },
     favorito: false,
   },
   {
     id: 5,
-    nombre: "Monitor LG de 24 pulgadas",
+    nombre: "Monitor LG Flatron Wide de 24 pulgadas",
     precio: 95000,
     categoria: "tecnologia",
     descripcion:
-      "Monitor de 24 pulgadas, ideal para trabajo y entretenimiento.",
+      "Monitor panorámico con base incluida, sin píxeles muertos. Ideal como segunda pantalla.",
     imagen: "img/monitor1.webp",
     vendedor: {
       nombre: "Diego Fuentes",
-      carrera: "Ingenieria Comercial",
+      carrera: "Ingeniería Comercial",
       contacto: "diego.fuentes@alumnos.cl",
-      
     },
     favorito: false,
   },
-  // Agregar más productos según sea necesario
+    {
+    id: 6,
+    nombre: "Calculadora Casio fx-991DE CW",
+    precio: 28000,
+    categoria: "tecnologia",
+    descripcion:
+      "Científica ClassWiz de pantalla natural, permitida en pruebas. Incluye tapa original y manual.",
+    imagen: "img/calculadora1.webp",
+    vendedor: {
+      nombre: "Ignacio Torres",
+      carrera: "Ingeniería Eléctrica",
+      contacto: "ignacio.torres@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 7,
+    nombre: "Mochila Quechua para notebook 15 pulgadas",
+    precio: 22000,
+    categoria: "accesorios",
+    descripcion:
+      "Compartimento acolchado para notebook, cierres en buen estado. Usada un semestre.",
+    imagen: "img/mochila1.webp",
+    vendedor: {
+      nombre: "Valentina Pérez",
+      carrera: "Diseño Gráfico",
+      contacto: "valentina.perez@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 8,
+    nombre: "Audífonos over-ear inalámbricos",
+    precio: 39000,
+    categoria: "accesorios",
+    descripcion:
+      "Inalámbricos con cancelación pasiva, hasta 50 horas de batería. Incluye cable de carga.",
+    imagen: "img/audifonos1.webp",
+    vendedor: {
+      nombre: "Camila Rojas",
+      carrera: "Ingeniería Civil",
+      contacto: "camila.rojas@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 9,
+    nombre: "Guitarra acústica Yamaha FG-331",
+    precio: 145000,
+    categoria: "instrumentos",
+    descripcion:
+      "Tapa de abeto, cuerdas nuevas y diapasón sin desgaste. Se entrega con funda blanda.",
+    imagen: "img/guitarra1.webp",
+    vendedor: {
+      nombre: "Matías Silva",
+      carrera: "Pedagogía en Música",
+      contacto: "matias.silva@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 10,
+    nombre: "Teclado Casio CTK-7200",
+    precio: 130000,
+    categoria: "instrumentos",
+    descripcion:
+      "61 teclas sensibles al tacto, 820 tonos y secuenciador incorporado. Incluye transformador.",
+    imagen: "img/teclado1.webp",
+    vendedor: {
+      nombre: "Javiera Núñez",
+      carrera: "Fonoaudiología",
+      contacto: "javiera.nunez@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 11,
+    nombre: "Bicicleta MTB Bulls Wild Cup",
+    precio: 180000,
+    categoria: "deportes",
+    descripcion:
+      "Marco de aluminio talla M, horquilla con suspensión, cambios Shimano y frenos de disco recién ajustados.",
+    imagen: "img/bicicleta1.webp",
+    vendedor: {
+      nombre: "Tomás Herrera",
+      carrera: "Kinesiología",
+      contacto: "tomas.herrera@alumnos.cl",
+    },
+    favorito: false,
+  },
+  {
+    id: 12,
+    nombre: "Set de mancuernas ajustables 20 kg",
+    precio: 45000,
+    categoria: "deportes",
+    descripcion:
+      "Par de barras con discos intercambiables y seguros de rosca. Sin óxido ni golpes.",
+    imagen: "img/mancuernas1.webp",
+    vendedor: {
+      nombre: "Fernanda Lagos",
+      carrera: "Enfermería",
+      contacto: "fernanda.lagos@alumnos.cl",
+    },
+    favorito: false,
+  },
+
 ];
 
 //========================================
@@ -132,7 +234,8 @@ const agregarProducto = (datos) => {
     precio: Number(datos.precio),
     categoria: datos.categoria,
     descripcion: datos.descripcion,
-    // Si no llega la imagen, se usa la de la categoria correspondiente.
+    // El formulario todavia no pide imagen: se usa la generica del catalogo.
+    imagen: "img/default.webp",
     vendedor: {
       nombre: datos.vendedor,
       carrera: datos.carrera,

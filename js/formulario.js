@@ -168,6 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         eliminarProducto(id);
 
+        // el producto ya no existe: hay que sacarlo del carrito
+        // y recalcular los favoritos guardados.
+        quitarProductoEliminadoDelCarrito(id);
+        guardarFavoritos();
+        renderFavoritos();
+
         actualizarEstadisticas();
         refrescarCatalogo();
 

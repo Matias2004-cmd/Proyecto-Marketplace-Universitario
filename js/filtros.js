@@ -138,6 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const buscador =
         document.getElementById("buscador");
 
+    const selectorOrden =
+        document.getElementById("selector-orden");
+
     const botonLimpiar =
         document.getElementById("btn-limpiar-filtros");
 
@@ -165,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         filtroCategoria.value = "";
         filtroPrecio.value = 500000;
         buscador.value = "";
+        selectorOrden.value = "relevancia";
 
         validarPrecioFiltro();
         actualizarCatalogoConFiltros();

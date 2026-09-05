@@ -49,6 +49,35 @@
     --color-bg-dark: #fef4f6;
 }
 
+/* Bootstrap aplica .bg-light con !important. Sin esta regla, las secciones
+   mantienen fondo claro mientras el texto hereda el color claro del tema. */
+[data-tema="oscuro"] .bg-light {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text);
+}
+
+[data-tema="oscuro"] .product-title {
+    color: var(--color-text);
+}
+
+/* Bootstrap deja el contenido del modal en blanco. Se adapta para conservar
+   contraste cuando el detalle de un producto se abre en tema oscuro. */
+[data-tema="oscuro"] .modal-content,
+[data-tema="oscuro"] .modal-header,
+[data-tema="oscuro"] .modal-footer {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+[data-tema="oscuro"] .modal .text-muted {
+    color: var(--color-text-muted) !important;
+}
+
+[data-tema="oscuro"] .modal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 /* Estilos Globales*/
 * {
     margin: 0;

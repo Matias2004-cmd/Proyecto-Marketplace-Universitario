@@ -65,7 +65,7 @@ const crearTarjeta = (producto) => {
   btnFavorito.className = "btn btn-small btn-favorite";
   btnFavorito.dataset.id = producto.id;
   btnFavorito.dataset.accion = "favorito";
-  btnFavorito.setAttribute("aria-label", "Agregar " + producto.nombre + " a favoritos");
+  btnFavorito.setAttribute("aria-label", producto.favorito ? "Quitar " + producto.nombre + " de favoritos" : "Agregar " + producto.nombre + "a favoritos");
   if (producto.favorito) {
     btnFavorito.classList.add("active");
   }
@@ -90,7 +90,17 @@ const crearTarjeta = (producto) => {
   iconoEliminar.className = "bi bi-trash";
   btnEliminar.appendChild(iconoEliminar);
 
-  acciones.append(btnFavorito, btnCarrito, btnEliminar);
+  const btnDetalle = document.createElement("button");
+  btnDetalle.type = "button";
+  btnDetalle.className = "btn btn-small btn-detalle";
+  btnDetalle.dataset.id = producto.id;
+  btnDetalle.dataset.accion = "detalle";
+  btnDetalle.setAttribute("aria-label", "Ver detalle de " + producto.nombre);
+  const iconoDetalle = document.createElement("i");
+  iconoDetalle.className = "bi bi-eye";
+  btnDetalle.appendChild(iconoDetalle);
+
+  acciones.append(btnFavorito, btnCarrito, btnDetalle, btnEliminar);
   cuerpo.append(categoria, titulo, descripcion, precio, vendedor, acciones);
   tarjeta.append(imagen, cuerpo);
   columna.appendChild(tarjeta);
@@ -141,4 +151,39 @@ const actualizarEstadisticas = () => {
   document.getElementById("total-productos").textContent = lista.length;
   document.getElementById("total-categorias").textContent = obtenerCategorias().length;
   document.getElementById("total-vendedores").textContent = vendedoresUnicos.size;
+};
+
+// ============================================================
+// Vista detallada del producto
+// Reutiliza el modal de Bootstrap que vive en index.html.
+// ============================================================
+
+// Se guarda la instancia para no crear una nueva en cada apertura.
+let modalDetalle = null;
+
+const mostrarDetalleProducto = (id) => {
+  const producto = buscarProductoPorId(id);
+  if (!producto) {
+    return;
+  }
+
+  document.getElementById("detalle-titulo").textContent = producto.nombre;
+  document.getElementById("detalle-categoria").textContent = nombreCategoria(producto.categoria);
+  document.getElementById("detalle-precio").textContent = formatearPrecio(producto.precio);
+  document.getElementById("detalle-descripcion").textContent = producto.descripcion;
+  document.getElementById("detalle-vendedor").textContent = producto.vendedor.nombre;
+  document.getElementById("detalle-carrera").textContent = producto.vendedor.carrera;
+  document.getElementById("detalle-contacto").textContent = producto.vendedor.contacto;
+
+  const imagen = document.getElementById("detalle-imagen");
+  imagen.src = producto.imagen;
+  imagen.alt = producto.nombre;
+
+  // El boton del pie necesita saber que producto se esta viendo.
+  document.getElementById("detalle-agregar").dataset.id = producto.id;
+
+  if (!modalDetalle) {
+    modalDetalle = new bootstrap.Modal(document.getElementById("modal-detalle"));
+  }
+  modalDetalle.show();
 };

@@ -103,7 +103,7 @@ const validarPrecioFiltro = () => {
         precio.value = 500000;
     }
 
-    precioActual.textContent = valor;
+    precioActual.textContent = valor.toLocaleString("es-CL");
 };
 
 // ===========================================
@@ -127,6 +127,7 @@ const actualizarCatalogoConFiltros = () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     cargarCategorias();
+    validarPrecioFiltro();
 
     const filtroCategoria =
         document.getElementById("filtro-categoria");

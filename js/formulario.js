@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const nombre = document.getElementById("producto-nombre");
         const descripcion = document.getElementById("producto-descripcion");
         const precio = document.getElementById("producto-precio");
+        const stock = document.getElementById("producto-stock");
         const categoria = document.getElementById("producto-categoria");
         const vendedor = document.getElementById("producto-vendedor");
         const carrera = document.getElementById("producto-carrera");
@@ -80,6 +81,17 @@ document.addEventListener("DOMContentLoaded", () => {
             formularioValido = false;
         } else {
             limpiarError(precio);
+        }
+
+        // validacion stock
+        if (stock.value.trim() === "") {
+            mostrar(stock, "Ingresa las unidades disponibles.");
+            formularioValido = false;
+        } else if (Number(stock.value) < 1) {
+            mostrarError(stock, "Debe gaber al menos 1 unidad.");
+            formularioValido = false;
+        } else {
+            limpiarError(stock);
         }
 
         // Validacion de categoria
@@ -115,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nombre: nombre.value.trim(),
             descripcion: descripcion.value.trim(),
             precio: precio.value,
+            stock: stock.value,
             categoria: categoria.value,
             vendedor: vendedor.value.trim(),
             carrera: carrera.value.trim(),

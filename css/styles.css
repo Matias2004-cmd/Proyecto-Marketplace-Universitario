@@ -56,6 +56,11 @@
     color: var(--color-text);
 }
 
+/* bootstrap pinta text muted con un gris oscuro fijo que se pierde sobre el fondo del tema oscuro. se reemplaza por la variable del tema. */
+[data-tema="oscuro"] .text-muted {
+    color: var(--color-text-muted) !important;
+}
+
 [data-tema="oscuro"] .product-title {
     color: var(--color-text);
 }
@@ -68,10 +73,6 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     border-color: var(--color-border);
-}
-
-[data-tema="oscuro"] .modal .text-muted {
-    color: var(--color-text-muted) !important;
 }
 
 [data-tema="oscuro"] .modal .btn-close {
@@ -267,6 +268,7 @@ html {
     margin-bottom: var(--spacing-md);
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -282,6 +284,16 @@ html {
     margin-bottom: var(--spacing-md);
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--color-border);
+}
+.product.stock {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm)
+}
+.btn-cart:disabled {
+    background-color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 .product-actions {
     display: flex;
@@ -558,6 +570,22 @@ select:focus-visible,
 textarea:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
+}
+
+#notificaciones {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    left: auto;
+    width: auto;
+    max-width: 22rem;
+    z-index: 1080;
+    pointer-events: none;
+}
+
+#notificaciones .alert {
+    pointer-events: auto;
+    box-shadow: var(--shadow-lg);
 }
 
 

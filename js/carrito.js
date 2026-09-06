@@ -42,11 +42,36 @@ const actualizarContadorCarrito = () => {
   contador.textContent = cantidadTotal;
   contador.classList.toggle("d-none", cantidadTotal === 0);
 };
+//stock disponibleo
+// el stock no se descuenta porque no hay checkout
+// lo que se controla es que el carrito nunca supere las unidades publicadas
+
+// unidades de un producto que ya estan en el carrito
+const unidadesEnCarrito = (id) => {
+  const item = carrito.find((itemCarrito) => itemCarrito.productoId === Number(id));
+  return item ? item.cantidad : 0;
+}
+
+// unidades que todavia se pueden agrefar
+const unidadesDisponibles = (id) => {
+  const producto = buscarProductoPorId(id);
+  if (!producto) {
+    return 0;
+  }
+  return producto.stock - unidadesEnCarrito(id);
+};
+
 //Agrega un producto.
 //si ya existe, aumente su cantidad en uno.
 const agregarAlCarrito = (id) => {
   const producto = buscarProductoPorId(id);
   if (!producto) {
+    return;
+  }
+
+  // sin unidades libres no se afrega nada
+  if (unidadesDisponibles(id) <= 0) {
+    mostrarNotificacion("No quedan unidades de " + producto.nombre + ".", "warning");
     return;
   }
   const itemExistente = carrito.find((item) => item.productoId === Number(id));
@@ -58,8 +83,11 @@ const agregarAlCarrito = (id) => {
       cantidad: 1,
     });
   }
+  
   guardarCarrito();
   renderCarrito();
+
+  mostrarNotificacion("Producto agregado al carrito.", "success");
 };
 // Cambiar la cantidad de un producto.
 // La variacion va hacer de +1 o -1.
@@ -116,6 +144,15 @@ const renderCarrito = () => {
   lista.replaceChildren();
   //Evita que queden en el carrito preductos eliminados del catalogo.
   carrito = carrito.filter((item) => buscarProductoPorId(item.productoId));
+
+  // si el stock bajo desde la ultima sesion, se recorta lo guardado.
+  carrito.forEach((item) => {
+    const producto = buscarProductoPorId(item.productoId);
+    if (producto && item.cantidad > producto.stock) {
+      item.cantidad = producto.stock;
+    }
+  });
+
   if (carrito.length === 0) {
     mensajeVacio.classList.remove("d-none");
   } else {
@@ -154,6 +191,8 @@ const renderCarrito = () => {
       `Sumar una unidad de ${producto.nombre}`,
       () => cambiarCantidad(producto.id, 1),
     );
+    // se apaga cuando ya se tomaron todas las unidades publicadas.
+    botonSumar.disabled = item.cantidad >= producto.stock;
     const botonQuitar = crearBoton(
       "Quitar",
       "btn btn-outline-danger btn-sm",
@@ -167,6 +206,9 @@ const renderCarrito = () => {
   totalElemento.textContent = formatearPrecio(obtenerTotalCarrito());
   guardarCarrito();
   actualizarContadorCarrito();
+
+  // el catalogo debe reflejar las unidades disponibles
+  refrescarCatalogo();
 };
 //se ejecuta desde la app.js cuando cargue la pagina.
 const CLAVE_FAVORITOS = "unimarket-favoritos";
@@ -263,7 +305,6 @@ const inicializarAccionesCatalogo = () => {
 
         if (boton.dataset.accion === "carrito") {
             agregarAlCarrito(id);
-            mostrarNotificacion("Producto agregado al carrito.", "success");
         }
 
         if (boton.dataset.accion === "favorito") {
@@ -278,7 +319,6 @@ const inicializarAccionesCatalogo = () => {
     // El boton del pie del modal agrega al carrito el producto abierto.
     document.getElementById("detalle-agregar").addEventListener("click", (evento) => {
         agregarAlCarrito(evento.currentTarget.dataset.id);
-        mostrarNotificacion("Producto agregado al carrito.", "success");
     });
 };
 

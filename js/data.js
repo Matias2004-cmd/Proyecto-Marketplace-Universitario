@@ -15,7 +15,7 @@ const categorias = [
 ];
 
 // Contrato acordado con el equipo para cada producto:
-// id, nombre, precio, categoria, descripcion, imagen,
+// id, nombre, precio, stock, categoria, descripcion, imagen,
 // vendedor { nombre, carrera, contacto }, favorito
 
 const productos = [
@@ -23,6 +23,7 @@ const productos = [
     id: 1,
     nombre: "Stewart - Calculus: Early Vectors",
     precio: 25000,
+    stock: 2,
     categoria: "libros",
     descripcion:
       "Libro de cálculo en buen estado, con anotaciones a lápiz en los primeros capítulos.",
@@ -38,6 +39,7 @@ const productos = [
     id: 2,
     nombre: "Solucionario University Physics, Volumen 1",
     precio: 32000,
+    stock: 1,
     categoria: "libros",
     descripcion:
       "Student Solutions Manual de Young y Freedman, capítulos 1 al 20. Tapa blanda, sin hojas sueltas.",
@@ -53,6 +55,7 @@ const productos = [
     id: 3,
     nombre: "Pocket Oxford Spanish Dictionary",
     precio: 15000,
+    stock: 1,
     categoria: "libros",
     descripcion:
       "Diccionario de bolsillo usado, tapa algo gastada pero completo y legible.",
@@ -68,6 +71,7 @@ const productos = [
     id: 4,
     nombre: "Notebook Lenovo Flex 2",
     precio: 420000,
+    stock: 1,
     categoria: "tecnologia",
     descripcion:
       "Pantalla táctil reclinable, Intel Core i5 con GeForce, 8 GB de RAM y 256 GB SSD. Incluye cargador.",
@@ -83,6 +87,7 @@ const productos = [
     id: 5,
     nombre: "Monitor LG Flatron Wide de 24 pulgadas",
     precio: 95000,
+    stock: 1,
     categoria: "tecnologia",
     descripcion:
       "Monitor panorámico con base incluida, sin píxeles muertos. Ideal como segunda pantalla.",
@@ -98,6 +103,7 @@ const productos = [
     id: 6,
     nombre: "Calculadora Casio fx-991DE CW",
     precio: 28000,
+    stock: 2,
     categoria: "tecnologia",
     descripcion:
       "Científica ClassWiz de pantalla natural, permitida en pruebas. Incluye tapa original y manual.",
@@ -113,6 +119,7 @@ const productos = [
     id: 7,
     nombre: "Mochila Quechua para notebook 15 pulgadas",
     precio: 22000,
+    stock: 4,
     categoria: "accesorios",
     descripcion:
       "Compartimento acolchado para notebook, cierres en buen estado. Usada un semestre.",
@@ -128,6 +135,7 @@ const productos = [
     id: 8,
     nombre: "Audífonos over-ear inalámbricos",
     precio: 39000,
+    stock: 1,
     categoria: "accesorios",
     descripcion:
       "Inalámbricos con cancelación pasiva, hasta 50 horas de batería. Incluye cable de carga.",
@@ -143,6 +151,7 @@ const productos = [
     id: 9,
     nombre: "Guitarra acústica Yamaha FG-331",
     precio: 145000,
+    stock: 1,
     categoria: "instrumentos",
     descripcion:
       "Tapa de abeto, cuerdas nuevas y diapasón sin desgaste. Se entrega con funda blanda.",
@@ -158,6 +167,7 @@ const productos = [
     id: 10,
     nombre: "Teclado Casio CTK-7200",
     precio: 130000,
+    stock: 1,
     categoria: "instrumentos",
     descripcion:
       "61 teclas sensibles al tacto, 820 tonos y secuenciador incorporado. Incluye transformador.",
@@ -173,6 +183,7 @@ const productos = [
     id: 11,
     nombre: "Bicicleta MTB Bulls Wild Cup",
     precio: 180000,
+    stock: 3,
     categoria: "deportes",
     descripcion:
       "Marco de aluminio talla M, horquilla con suspensión, cambios Shimano y frenos de disco recién ajustados.",
@@ -188,6 +199,7 @@ const productos = [
     id: 12,
     nombre: "Set de mancuernas ajustables 20 kg",
     precio: 45000,
+    stock: 1,
     categoria: "deportes",
     descripcion:
       "Par de barras con discos intercambiables y seguros de rosca. Sin óxido ni golpes.",

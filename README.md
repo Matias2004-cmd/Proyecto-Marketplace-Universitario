@@ -68,6 +68,8 @@ UniMarket centraliza todas estas transacciones en una plataforma unificada, amig
 - [x] Eliminación de productos
 - [x] Información del vendedor en cada producto
 - [x] Vista detallada del producto (modal de Bootstrap)
+- [x] Control de stock: el carrito no permite superar las unidades publicadas
+
 
 #### ✅ Experiencia de Usuario
 - [x] Interfaz responsive (375px, 768px, 1280px)
@@ -80,6 +82,7 @@ UniMarket centraliza todas estas transacciones en una plataforma unificada, amig
 
 #### 📊 Datos Simulados
 - **12 productos** de ejemplo distribuidos en 5 categorías
+- **Stock por producto** entre 1 y 4 unidades
 - **Precios realistas** en pesos chilenos ($15k - $450k)
 - **Vendedores únicos** con información de carrera y contacto
 - **Imágenes locales** en `img/` (WebP, 640x480)

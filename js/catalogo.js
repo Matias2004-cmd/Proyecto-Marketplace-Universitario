@@ -56,6 +56,12 @@ const crearTarjeta = (producto) => {
   vendedor.className = "product-seller";
   vendedor.textContent = producto.vendedor.nombre + " - " + producto.vendedor.carrera;
 
+  const libres = producto.stock - unidadesEnCarrito(producto.id);
+
+  const stock = document.createElement("p");
+  stock.className = "product-stock";
+  stock.textContent = libres > 0 ? "Quedan " + libres + (libres === 1 ? " unidad" : " unidades") : "Sin stock disponible";
+
   // --- Botones ---
   const acciones = document.createElement("div");
   acciones.className = "product-actions";
@@ -79,6 +85,7 @@ const crearTarjeta = (producto) => {
   btnCarrito.dataset.id = producto.id;
   btnCarrito.dataset.accion = "carrito";
   btnCarrito.textContent = "Agregar";
+  btnCarrito.disabled = libres <= 0;
 
   const btnEliminar = document.createElement("button");
   btnEliminar.type = "button";
@@ -101,7 +108,7 @@ const crearTarjeta = (producto) => {
   btnDetalle.appendChild(iconoDetalle);
 
   acciones.append(btnFavorito, btnCarrito, btnDetalle, btnEliminar);
-  cuerpo.append(categoria, titulo, descripcion, precio, vendedor, acciones);
+  cuerpo.append(categoria, titulo, descripcion, precio, stock, vendedor, acciones);
   tarjeta.append(imagen, cuerpo);
   columna.appendChild(tarjeta);
 
@@ -181,6 +188,10 @@ const mostrarDetalleProducto = (id) => {
 
   // El boton del pie necesita saber que producto se esta viendo.
   document.getElementById("detalle-agregar").dataset.id = producto.id;
+
+  const libresDetalle = producto.stock - unidadesEnCarrito(producto.id);
+  document.getElementById("detalle-stock").textContent = libresDetalle > 0 ? "Disponibles: " + libresDetalle + " de " + producto.stock : "Sin stock disponible";
+  document.getElementById("detalle-agregar").disabled = libresDetalle <= 0;
 
   if (!modalDetalle) {
     modalDetalle = new bootstrap.Modal(document.getElementById("modal-detalle"));

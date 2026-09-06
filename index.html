@@ -90,7 +90,7 @@
     </header>
 
     <!-- Zona de notificaciones (la llena JS) -->
-    <div id="notificaciones" class="container mt-3" role="status" aria-live="polite"></div>
+    <div id="notificaciones"  role="status" aria-live="polite"></div>
 
     <!-- Contenido principal -->
     <main>
@@ -193,14 +193,20 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
                                     <label for="producto-precio" class="form-label">Precio ($)</label>
                                     <input type="number" class="form-control" id="producto-precio" min="0" required>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
+                                    <label for="producto-stock" class="form-label">Unidades</label>
+                                    <input type="number" class="form-control" id="producto-stock" min="1" value="1" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
                                     <label for="producto-categoria" class="form-label">Categoría</label>
                                     <select class="form-select" id="producto-categoria" required>
-                                        <option value="">Selecciona una categoría</option>
+                                        <option value">
+                                            Selecciona una categoría
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -270,7 +276,8 @@
                         <div class="col-md-6">
                             <span id="detalle-categoria" class="badge bg-primary mb-2"></span>
                             <p id="detalle-precio" class="fs-3 fw-bold mb-3"></p>
-                            <p id="detalle-descripcion" class="mb-4"></p>
+                            <p id="detalle-stock" class="mb-3"></p>
+                            <p id="detalle-descripcion" class="mb-3"></p>
                             <h3 class="h6 text-uppercase text-muted">Vendedor</h3>
                             <ul class="list-unstyled small mb-0">
                                 <li><strong>Nombre:</strong> <span id="detalle-vendedor"></span></li>
